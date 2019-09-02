@@ -3,10 +3,10 @@ services:
   - docker
 
 before install:
-  - docker build -t freemancisco/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t freemancisco/reacttest -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run freemancisco/react-test npm test -- --coverage
+  - docker run freemancisco/reacttest npm test -- --coverage
 
 after_success:
   - docker build -t freemancisco/multi-client
