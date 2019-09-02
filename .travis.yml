@@ -9,10 +9,10 @@ script:
   - docker run -e CI=true freemancisco/react-test npm test
 
 after_success:
-  - docker build -t freemancisco/multi-client
-  - docker build -t freemancisco/multi-nginx
-  - docker build -t freemancisco/multi-server
-  - docker build -t freemancisco/multi-worker
+  - docker build -t freemancisco/multi-client ./client
+  - docker build -t freemancisco/multi-nginx ./nginx
+  - docker build -t freemancisco/multi-server ./server
+  - docker build -t freemancisco/multi-worker ./worker
   #log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #take those images and push to docker hub
