@@ -1,0 +1,48 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "freemancisco/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "freemancisco/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "freemancisco/multi-worker",
+            "hostname": "worker",
+            "essential": false
+
+        },
+            {
+                "name": "nginx",
+                "image": "freemancisco/multi-nginx",
+                "hostname": "nginx",
+                "essential": true,
+                "portMappings": [
+                    { "hostport": 80,
+                        "containerport": 80
+
+                    }
+                ],
+                "links": ["client, server"]
+
+            }
+
+
+
+
+
+    ]
+
+
+
+
+
+}
