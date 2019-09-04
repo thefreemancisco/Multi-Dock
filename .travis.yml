@@ -20,3 +20,15 @@ after_success:
   - docker push freemancisco/multi-nginx
   - docker push freemancisco/multi-server
   - docker push freemancisco/multi-worker
+
+  deploy: 
+      provider: elasticbeanstalk 
+      region: us-east-2
+      app: Multi-docker
+      bucket_name: elasticbeanstalk-us-east-2-833552516635
+      bucket_path: docker-multi
+      on: 
+        branch: master
+      access_key_id: $AWS_ACCESS_KEY
+      secret_access_key:
+          secure: $AWS_SECRET_KEY
